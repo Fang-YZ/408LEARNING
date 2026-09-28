@@ -1,0 +1,24 @@
+﻿# n3_switch_compare.txt -- N3 通关测试值：三种交换方式时延对比
+# 用法: powershell -ExecutionPolicy Bypass -File .\tools\check.ps1 -Exe .\networks\N03_physical_layer\examples\switch_compare.exe -Tests .\tools\tests\n3_switch_compare.txt
+# 模型: 电路 = 0.5 + L/R ；报文 = k*(L/R) ；分组 = (k + p - 1)*(P/R), p = L/P
+#
+# MAIN: L=8000 bit, R=1000 bps, k=3 跳, P=1000 bit -> p=8
+8000 1000 3 1000 => packet_count       = 8
+8000 1000 3 1000 => one_hop_time_s     = 8.000000 s
+8000 1000 3 1000 => circuit_total_s    = 8.500000 s
+8000 1000 3 1000 => message_total_s    = 24.000000 s
+8000 1000 3 1000 => packet_total_s     = 10.000000 s
+8000 1000 3 1000 => packet_vs_message  = 14.000000 s saved
+8000 1000 3 1000 => faster_than_msg    = packet
+#
+# B1 边界: P = L（只有一个分组）-> 分组退化成报文交换，无流水线收益，两者都是 24 s
+8000 1000 3 8000 => packet_count       = 1
+8000 1000 3 8000 => message_total_s    = 24.000000 s
+8000 1000 3 8000 => packet_total_s     = 24.000000 s
+8000 1000 3 8000 => packet_vs_message  = 0.000000 s saved
+#
+# B2 边界: 单包小数据 -> 电路交换的固定 0.5 s 建链成本反而占优
+1000 1000 3 1000 => one_hop_time_s     = 1.000000 s
+1000 1000 3 1000 => circuit_total_s    = 1.500000 s
+1000 1000 3 1000 => packet_total_s     = 3.000000 s
+1000 1000 3 1000 => circuit_vs_packet  = circuit wins by 1.500000 s

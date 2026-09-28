@@ -1,0 +1,33 @@
+﻿# n3_channel_capacity.txt -- N3 通关测试值：信道容量计算器
+# 用法: powershell -ExecutionPolicy Bypass -File .\tools\check.ps1 -Exe .\networks\N03_physical_layer\examples\channel_capacity.exe -Tests .\tools\tests\n3_channel_capacity.txt
+# 说明: 该程序是命令行参数版；check.ps1 会把每行 INPUT 通过 stdin 送进去并忽略，
+#       程序读到的是下面的固定参数。期望值全部经手算 + 实测双向核对过。
+#
+# MAIN: B=3000 Hz, V=4 (2 bit/码元), SNR=20 dB (S/N=100)
+3000 4 20 => nyquist_capacity   = 12000 bps
+3000 4 20 => bits_per_symbol    = 2.000000 bit
+3000 4 20 => snr_linear         = 100.000000
+3000 4 20 => shannon_capacity   = 19974.634448 bps
+3000 4 20 => max_data_rate      = 12000.000000 bps
+3000 4 20 => limit_source       = nyquist
+#
+# B1: 理想信道（SNR 传 -1）
+3000 4 -1 => shannon_capacity   = (not applicable: ideal channel)
+3000 4 -1 => max_data_rate      = 12000.000000 bps
+#
+# B2: SNR=0 dB -> S/N=1 -> 香农 = B*log2(2) = B = 3000 恰好等于带宽
+3000 2 0 => snr_linear         = 1.000000
+3000 2 0 => shannon_capacity   = 3000.000000 bps
+3000 2 0 => limit_source       = shannon
+#
+# B3: V=8 (3 bit/码元), SNR=30 dB (S/N=1000)
+3000 8 30 => nyquist_capacity   = 18000 bps
+3000 8 30 => shannon_capacity   = 29901.678777 bps
+3000 8 30 => max_data_rate      = 18000.000000 bps
+#
+# B4: 边界——高电平数把奈奎斯特抬到 20000，但噪声把香农压到 13287.86，此时香农是瓶颈
+1000 1024 40 => bits_per_symbol    = 10.000000 bit
+1000 1024 40 => nyquist_capacity   = 20000 bps
+1000 1024 40 => shannon_capacity   = 13287.856642 bps
+1000 1024 40 => max_data_rate      = 13287.856642 bps
+1000 1024 40 => limit_source       = shannon

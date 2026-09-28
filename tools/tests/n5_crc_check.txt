@@ -1,0 +1,42 @@
+﻿# n5_crc_check.txt -- N5 通关测试值：CRC 循环冗余校验器
+# 用法: powershell -ExecutionPolicy Bypass -File .\tools\check-n5.ps1
+# 规则: r = deg(G) = strlen(G) - 1
+#       被除数 = 数据位后面补 r 个 0
+#       余数   = 被除数 mod 2 除以 G（逐位 XOR）
+#       码字   = 数据位 || 余数（长度 = 数据位 + r）；码字整体再除以 G 余数必为 0
+# 期望值全部经手算 + 实测双向核对。
+#
+# MAIN: 教材经典例题 1101011011 / 10011  (r=4)
+1101011011 10011 => generator_degree_r = 4
+1101011011 10011 => divided_bits       = 11010110110000
+1101011011 10011 => remainder          = 1110
+1101011011 10011 => remainder_hex      = 0xE
+1101011011 10011 => codeword           = 11010110111110
+1101011011 10011 => codeword_length    = 14 bit
+1101011011 10011 => verdict            = OK (remainder is zero)
+#
+# B1: 101001 / 1101  (r=3)
+101001 1101 => generator_degree_r = 3
+101001 1101 => remainder          = 001
+101001 1101 => codeword           = 101001001
+101001 1101 => codeword_length    = 9 bit
+#
+# B2 边界: 只有 1 位数据，r=1
+1 11 => data_length        = 1 bit
+1 11 => remainder          = 1
+1 11 => codeword           = 11
+1 11 => codeword_length    = 2 bit
+#
+# B3 边界: 8 位全 1 数据 + 9 位生成多项式 (r=8)
+11111111 100000001 => generator_degree_r = 8
+11111111 100000001 => divided_bits       = 1111111100000000
+11111111 100000001 => remainder_hex      = 0xFF
+11111111 100000001 => codeword           = 1111111111111111
+11111111 100000001 => codeword_length    = 16 bit
+#
+# B4: 10 位数据 + 3 位生成多项式 (r=2)
+# 注：教练初稿把本组余数误写成 00，经手算与实测双向复核后为 10（逐位 XOR 到末尾剩 10），已更正
+1101011011 101 => generator_degree_r = 2
+1101011011 101 => remainder          = 10
+1101011011 101 => codeword           = 110101101110
+1101011011 101 => verdict            = OK (remainder is zero)

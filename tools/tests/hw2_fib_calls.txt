@@ -1,0 +1,10 @@
+# L5 HW2 naive Fibonacci call counter - input => expected output
+# compile: gcc -Wall -Wextra -D__USE_MINGW_ANSI_STDIO=1 hw2_fib_calls.c -o hw2_fib_calls.exe
+# format:  fib(n) = V, calls = C
+# NOTE: calls(n) = 2 * fib(n + 1) - 1 -> the counter is the point of this exercise.
+0 => fib(0) = 0, calls = 1
+1 => fib(1) = 1, calls = 1
+2 => fib(2) = 1, calls = 3
+5 => fib(5) = 5, calls = 15
+10 => fib(10) = 55, calls = 177
+20 => fib(20) = 6765, calls = 21891

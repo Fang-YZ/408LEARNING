@@ -1,0 +1,9 @@
+# L5 HW1 recursive sum / factorial - input => expected output
+# compile: gcc -Wall -Wextra -D__USE_MINGW_ANSI_STDIO=1 hw1_rec_sum_factorial.c -o hw1_rec_sum_factorial.exe
+# format:  sum(1..n) = S   +   n! = F   (two lines, both long long)
+# NOTE: n = 0 must answer S = 0 and 0! = 1 -> the base case must be wide (n <= 1 / n <= 0).
+0 => sum(1..0) = 0\n0! = 1
+1 => sum(1..1) = 1\n1! = 1
+5 => sum(1..5) = 15\n5! = 120
+10 => sum(1..10) = 55\n10! = 3628800
+20 => sum(1..20) = 210\n20! = 2432902008176640000

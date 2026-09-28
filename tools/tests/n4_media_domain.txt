@@ -1,0 +1,29 @@
+﻿# n4_media_domain.txt -- N4 通关测试值：介质与冲突域/广播域计算器
+# 用法: powershell -ExecutionPolicy Bypass -File .\tools\check-n4.ps1
+# 规则: hub 共享带宽(每人 = B/n)、冲突域=1、广播域=1
+#       switch 每口独占(每人 = B)、冲突域=n、广播域=VLAN 数（VLAN 数上限 = 端口数）
+# 期望值全部经手算 + 实测双向核对。
+#
+# MAIN: 默认 8 台 10Mb/s hub
+8 10000000 hub 1 => per_device_bps     = 1250000.000000 bps
+8 10000000 hub 1 => collision_domains  = 1
+8 10000000 hub 1 => broadcast_domains  = 1
+8 10000000 hub 1 => total_usable_bps   = 10000000 bps
+#
+# B1: 交换机 8 台 3 个 VLAN
+8 10000000 switch 3 => per_device_bps     = 10000000.000000 bps
+8 10000000 switch 3 => collision_domains  = 8
+8 10000000 switch 3 => broadcast_domains  = 3
+8 10000000 switch 3 => total_usable_bps   = 80000000 bps
+8 10000000 switch 3 => sharing_penalty    = none
+#
+# B2: 交换机但只有一个 VLAN -> 广播域 1（默认的单广播域）
+8 10000000 switch 1 => broadcast_domains  = 1
+#
+# B3: 边界——只有 1 台设备接集线器：独占全部带宽，不算"共享惩罚"
+1 10000000 hub 1 => per_device_bps     = 10000000.000000 bps
+1 10000000 hub 1 => sharing_penalty    = none
+#
+# B4: 边界——VLAN 数超过端口数，应被裁剪为端口数
+4 10000000 switch 99 => vlans              = 4
+4 10000000 switch 99 => broadcast_domains  = 4

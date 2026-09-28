@@ -1,0 +1,11 @@
+# L5 HW3 recursion over an array - input => expected output
+# compile: gcc -Wall -Wextra hw3_array_recursion.c -o hw3_array_recursion.exe
+# input :  count            (first line)
+#          v1 v2 ... vn     (second line, count integers)
+# format:  sum = S, max = M
+# NOTE: one element, all negative, and sum exactly INT_MAX are the boundary cases.
+1\n-5 => sum = -5, max = -5
+4\n3 9 4 7 => sum = 23, max = 9
+6\n3 9 4 7 1 8 => sum = 32, max = 9
+5\n-5 -3 -9 -1 -7 => sum = -25, max = -1
+2\n2000000000 147483647 => sum = 2147483647, max = 2000000000

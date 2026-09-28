@@ -1,0 +1,10 @@
+# L5 HW4 Tower of Hanoi (challenge) - input => expected output
+# compile: gcc -Wall -Wextra hw4_hanoi.c -o hw4_hanoi.exe
+# format:  one line per move:  move disk D: X -> Y      then   total moves = N
+# NOTE: n = 0 is in the test on purpose -> a narrow base case (if (disks == 1))
+#       would recurse forever and crash instead of printing "total moves = 0".
+0 => total moves = 0
+1 => move disk 1: A -> C\ntotal moves = 1
+2 => move disk 1: A -> B\nmove disk 2: A -> C\nmove disk 1: B -> C\ntotal moves = 3
+3 => move disk 1: A -> C\nmove disk 2: A -> B\nmove disk 1: C -> B\nmove disk 3: A -> C\nmove disk 1: B -> A\nmove disk 2: B -> C\nmove disk 1: A -> C\ntotal moves = 7
+4 => total moves = 15
