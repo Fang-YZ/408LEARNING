@@ -41,6 +41,7 @@ $lessons = @(
     @{ Id = 'N3'; Dir = 'N03_physical_layer'; Title = '物理层(1)+通信基础';      Grade = 'check-n3.ps1' }
     @{ Id = 'N4'; Dir = 'N04_transmission_media'; Title = '物理层(2)+介质/设备'; Grade = 'check-n4.ps1' }
     @{ Id = 'N5'; Dir = 'N05_data_link_basics';   Title = '数据链路层(1)';       Grade = 'check-n5.ps1' }
+    @{ Id = 'N6'; Dir = 'N06_flow_reliable';      Title = '数据链路层(2)';       Grade = 'check-n6.ps1' }
 )
 
 foreach ($l in $lessons) {
@@ -127,6 +128,7 @@ Get-ChildItem (Join-Path $ROOT 'tools') -Filter 'check-n*.ps1' -File -ErrorActio
             'check-n3' { 'N3 信道/交换  ' }
             'check-n4' { 'N4 介质/设备  ' }
             'check-n5' { 'N5 组帧/CRC   ' }
+            'check-n6' { 'N6 窗口/可靠  ' }
             default    { '              ' }
         }
         Write-Host ("    $tag tools\" + $_.Name) -ForegroundColor White
