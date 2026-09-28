@@ -2,18 +2,23 @@
 long long sum_to(int n);
 long long factorial(int n);
 
-int main(void)
-{
-    for (int n = 0; n <= 5; n++)
-    {
-        printf("factorial(%d) = %lld\n", n, factorial(n));
-    }
+int main(void){
+    int n;
+    scanf("%d", &n);
+    long long sumto =sum_to(n);
+    long long fact = factorial(n);
+    printf("sum(1..%d) = %lld\n", n, sumto);
+    printf("%d! = %lld", n, fact);
 
     return 0;
 }
 
-long long factorial(int n)
-{
+long long sum_to(int n){
+    if(n <= 0) return 0;
+    return n + sum_to(n - 1);
+}
+
+long long factorial(int n){
     if (n <= 1)                     /* rule 1: base case -- answer it directly */
     {
         return 1;
