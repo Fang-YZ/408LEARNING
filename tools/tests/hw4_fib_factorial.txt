@@ -1,0 +1,10 @@
+# L4 HW4 fib / factorial (challenge) - input => expected output
+# compile: gcc -Wall -Wextra -D__USE_MINGW_ANSI_STDIO=1 hw4_fib_factorial.c -o hw4_fib_factorial.exe
+# format:  fib(n) = f   +   n! = fact   (two lines, both long long)
+# NOTE: range is 0..20; 0! = 1 and fib(0) = 0 are the boundary pair.
+0 => fib(0) = 0\n0! = 1
+1 => fib(1) = 1\n1! = 1
+2 => fib(2) = 1\n2! = 2
+5 => fib(5) = 5\n5! = 120
+10 => fib(10) = 55\n10! = 3628800
+20 => fib(20) = 6765\n20! = 2432902008176640000

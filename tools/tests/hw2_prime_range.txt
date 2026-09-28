@@ -1,0 +1,11 @@
+# L4 HW2 prime range - input => expected output
+# compile: gcc -Wall -Wextra hw2_prime_range.c -o hw2_prime_range.exe
+# format:  primes in [low, high] = count
+# NOTE: is_prime() must reject n < 2, so "1 1" answers 0.
+1 1 => primes in [1, 1] = 0
+1 2 => primes in [1, 2] = 1
+2 2 => primes in [2, 2] = 1
+2 10 => primes in [2, 10] = 4
+10 20 => primes in [10, 20] = 4
+1 100 => primes in [1, 100] = 25
+999900 1000000 => primes in [999900, 1000000] = 8

@@ -1,0 +1,10 @@
+# L4 HW3 digit sum / reverse - input => expected output
+# compile: gcc -Wall -Wextra -D__USE_MINGW_ANSI_STDIO=1 hw3_digits_reverse.c -o hw3_digits_reverse.exe
+# format:  n = X: digit sum = s, reverse = r   (r is long long)
+# NOTE: n = 0 must answer s = 0, r = 0; 2147483647 reversed is 7463847412 (> INT_MAX).
+0 => n = 0: digit sum = 0, reverse = 0
+5 => n = 5: digit sum = 5, reverse = 5
+100 => n = 100: digit sum = 1, reverse = 1
+12345 => n = 12345: digit sum = 15, reverse = 54321
+1000000000 => n = 1000000000: digit sum = 1, reverse = 1
+2147483647 => n = 2147483647: digit sum = 46, reverse = 7463847412

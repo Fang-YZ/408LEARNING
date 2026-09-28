@@ -1,0 +1,8 @@
+# L3 HW1 factorial - input => expected output
+# compile: gcc -Wall -Wextra -D__USE_MINGW_ANSI_STDIO=1 hw1_factorial.c -o hw1_factorial.exe
+1 => 1! = 1
+2 => 2! = 2
+5 => 5! = 120
+10 => 10! = 3628800
+13 => 13! = 6227020800
+20 => 20! = 2432902008176640000

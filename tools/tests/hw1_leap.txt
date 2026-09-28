@@ -1,0 +1,9 @@
+# HW1 leap year - input => expected output
+# compile: gcc -Wall -Wextra hw1_leap.c -o hw1_leap.exe
+2000 => year 2000 is a leap year
+1900 => year 1900 is not a leap year
+2024 => year 2024 is a leap year
+2023 => year 2023 is not a leap year
+400 => year 400 is a leap year
+100 => year 100 is not a leap year
+1 => year 1 is not a leap year

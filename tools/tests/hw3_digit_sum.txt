@@ -1,0 +1,9 @@
+# L3 HW3 digits and digit sum - input => expected output
+# compile: gcc -Wall -Wextra hw3_digit_sum.c -o hw3_digit_sum.exe
+0 => digits = 1, digit sum = 0
+5 => digits = 1, digit sum = 5
+10 => digits = 2, digit sum = 1
+999 => digits = 3, digit sum = 27
+12345 => digits = 5, digit sum = 15
+1000000000 => digits = 10, digit sum = 1
+2147483647 => digits = 10, digit sum = 46

@@ -1,0 +1,9 @@
+# L4 HW1 gcd / lcm - input => expected output
+# compile: gcc -Wall -Wextra -D__USE_MINGW_ANSI_STDIO=1 hw1_gcd_lcm.c -o hw1_gcd_lcm.exe
+# format:  gcd(a, b) = g   +   lcm(a, b) = l   (two lines, l is long long)
+12 18 => gcd(12, 18) = 6\nlcm(12, 18) = 36
+100 75 => gcd(100, 75) = 25\nlcm(100, 75) = 300
+1 1 => gcd(1, 1) = 1\nlcm(1, 1) = 1
+17 5 => gcd(17, 5) = 1\nlcm(17, 5) = 85
+270 192 => gcd(270, 192) = 6\nlcm(270, 192) = 8640
+1000000000 999999999 => gcd(1000000000, 999999999) = 1\nlcm(1000000000, 999999999) = 999999999000000000
