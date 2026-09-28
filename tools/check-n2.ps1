@@ -1,4 +1,4 @@
-# ---------------------------------------------------------------------------
+﻿# ---------------------------------------------------------------------------
 # check-n2.ps1 -- B-line N2 mechanical pre-grader (network architecture)
 #
 # What it checks (only things a machine can judge):
@@ -13,8 +13,8 @@
 #   powershell -ExecutionPolicy Bypass -File .\tools\check-n2.ps1
 #
 # Expected student layout (see networks/N02_layered_arch/notes.md section 六):
-#   homework/N02/echo_server.c        (Q3: the ex1 skeleton, working)
-#   homework/N02/encap_demo.c         (Q2: the ex3 concept demo, working)
+#   homeworknet/N02/echo_server.c        (Q3: the ex1 skeleton, working)
+#   homeworknet/N02/encap_demo.c         (Q2: the ex3 concept demo, working)
 #   solutions/N02_layered_arch/ex3_upper_server.c (Q4 reference, coach copy)
 #
 # Output is ASCII English on purpose (Windows console + Chinese = mojibake).
@@ -23,7 +23,7 @@ $ErrorActionPreference = 'Continue'
 
 $ROOT   = 'E:\learn408'
 $SRC    = Join-Path $ROOT 'networks\N02_layered_arch\examples'
-$HW     = Join-Path $ROOT 'homework\N02'
+$HW     = Join-Path $ROOT 'homeworknet\N02'
 $LOGDIR = Join-Path $ROOT 'grade\logs'
 if (-not (Test-Path $LOGDIR)) { New-Item -ItemType Directory -Path $LOGDIR -Force | Out-Null }
 $REPORT = Join-Path $LOGDIR 'N02-precheck-report.txt'
@@ -85,7 +85,7 @@ $hwDemo   = Join-Path $HW 'encap_demo.c'
 # Fall back to the classroom copy so the socket regression can still run and be graded.
 $useFallback = $false
 if (-not (Test-Path $hwServer)) {
-    Check 'COMPILE-Q3' $false "homework/N02/echo_server.c not submitted -- grading the classroom copy instead"
+    Check 'COMPILE-Q3' $false "homeworknet/N02/echo_server.c not submitted -- grading the classroom copy instead"
     $hwServer = Join-Path $SRC 'ex1_echo_server.c'
     $useFallback = $true
 } else {
@@ -106,7 +106,7 @@ if (Test-Path $hwDemo) {
     $o = & gcc -Wall -Wextra -O2 -o (Join-Path $HW 'encap_demo.exe') $hwDemo 2>&1
     Check 'COMPILE-Q2' ($LASTEXITCODE -eq 0 -and -not $o) 'student encap_demo.c compiles warning-free'
 } else {
-    Check 'COMPILE-Q2' $false 'homework/N02/encap_demo.c not submitted yet'
+    Check 'COMPILE-Q2' $false 'homeworknet/N02/encap_demo.c not submitted yet'
 }
 
 # the client is a classroom example: compile it for the end-to-end check

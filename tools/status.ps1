@@ -6,7 +6,7 @@
 #
 # 它做四件事：
 #   1. 对比「课次」与「已就绪材料」，报出每课材料齐不齐（笔记/示例/参考答案）
-#   2. 扫描 homework\N01..N05\ 收件箱，报出已交/未交
+#   2. 扫描 homeworknet\N01..N06\ 收件箱，报出已交/未交
 #   3. 打印「现在该做什么」（当前阻塞点 + 一条命令验证）
 #   4. 打印档案里的每日节奏
 #
@@ -69,8 +69,8 @@ foreach ($l in $lessons) {
 Head '作业收件箱（homework\）'
 
 $found = $false
-foreach ($n in @('N01', 'N02', 'N03', 'N04', 'N05')) {
-    $hw = Join-Path $ROOT ("homework\" + $n)
+foreach ($n in @('N01', 'N02', 'N03', 'N04', 'N05', 'N06')) {
+    $hw = Join-Path $ROOT ("homeworknet\" + $n)
     $files = @()
     if (Test-Path $hw) {
         $files = @(Get-ChildItem $hw -Recurse -File -ErrorAction SilentlyContinue |
@@ -88,18 +88,18 @@ if (-not $found) { Write-Host '    （B 线目前没有任何提交件）' -Fore
 # --- 4. 现在该做什么 -------------------------------------------------------
 Head '现在该做什么'
 
-if (-not (Test-Path (Join-Path $ROOT 'homework\N01'))) {
+if (-not (Test-Path (Join-Path $ROOT 'homeworknet\N01\net_delay.c'))) {
     Write-Host '    阻塞点：B 线 N1 的 H1–H4 尚未提交 → N2/N3 不能解锁' -ForegroundColor Yellow
     Write-Host ''
     Write-Host '    第 1 步  打开笔记做 H1–H4：' -ForegroundColor Cyan
     Write-Host '             networks\N01_intro_metrics\notes.md' -ForegroundColor White
     Write-Host '    第 2 步  H4 的程序存到这里：' -ForegroundColor Cyan
-    Write-Host '             homework\N01\net_delay.c' -ForegroundColor White
+    Write-Host '             homeworknet\N01\net_delay.c' -ForegroundColor White
     Write-Host '    第 3 步  存盘后跑批改（会打印 PASS/FAIL 明细）：' -ForegroundColor Cyan
     Write-Host '             powershell -ExecutionPolicy Bypass -File .\networks\N01_intro_metrics\grade_net_delay.ps1' -ForegroundColor White
     Write-Host '    第 4 步  把批改输出贴给我，我逐题批改并登记错题' -ForegroundColor Cyan
 } else {
-    Write-Host '    homework\N01 已有文件 → 我该批改了。' -ForegroundColor Green
+    Write-Host '    homeworknet\N01\net_delay.c 已交 → 我该批改了。' -ForegroundColor Green
     Write-Host '    批改命令：' -ForegroundColor Cyan
     Write-Host '      powershell -ExecutionPolicy Bypass -File .\networks\N01_intro_metrics\grade_net_delay.ps1' -ForegroundColor White
 }

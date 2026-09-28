@@ -1,6 +1,6 @@
-# grade_net_delay.ps1 — Auto-grader for N1 H4 (net_delay.c)
-# Usage:  powershell -File grade_net_delay.ps1 [-Path homework/N01/net_delay.c]
-# Defaults to homework/N01/net_delay.c when the optional path is omitted.
+﻿# grade_net_delay.ps1 — Auto-grader for N1 H4 (net_delay.c)
+# Usage:  powershell -File grade_net_delay.ps1 [-Path homeworknet/N01/net_delay.c]
+# Defaults to homeworknet/N01/net_delay.c when the optional path is omitted.
 # Checks: 1) gcc -Wall -Wextra zero-warning compile
 #         2) MAIN + B1..B4 test sets, key numeric lines compared to expected
 # Output is ASCII English on purpose.
@@ -9,7 +9,7 @@ param([string]$Path = "")
 $keys = @('send_delay','propagation_delay','total_delay',
           'delay_bandwidth_product','rtt_propagation')
 
-if ($Path -eq "") { $Path = "E:\learn408\homework\N01\net_delay.c" }
+if ($Path -eq "") { $Path = "E:\learn408\homeworknet\N01\net_delay.c" }
 $full = Join-Path (Get-Location) $Path
 if (-not (Test-Path $Path)) {
     Write-Output "NO_SUBMISSION_FILE: $Path"
