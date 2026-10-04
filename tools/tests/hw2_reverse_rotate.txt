@@ -1,0 +1,13 @@
+# L6 HW2 reverse + rotate right - input => expected output
+# compile: gcc -Wall -Wextra hw2_reverse_rotate.c -o hw2_reverse_rotate.exe
+# input :  count           (first line)
+#          v1 v2 ... vn    (second line)
+#          k               (third line, k >= 0)
+# output:  reversed: v0 v1 ... vn-1
+#          rotated: w0 w1 ... wn-1       (rotated RIGHT by k positions)
+# NOTE: k = 0, k = count and k > count are all in the test set.
+5\n1 2 3 4 5\n2 => reversed: 5 4 3 2 1\nrotated: 4 5 1 2 3
+6\n12 5 27 8 19 3\n0 => reversed: 3 19 8 27 5 12\nrotated: 12 5 27 8 19 3
+1\n42\n3 => reversed: 42\nrotated: 42
+5\n1 2 3 4 5\n5 => reversed: 5 4 3 2 1\nrotated: 1 2 3 4 5
+5\n1 2 3 4 5\n7 => reversed: 5 4 3 2 1\nrotated: 4 5 1 2 3

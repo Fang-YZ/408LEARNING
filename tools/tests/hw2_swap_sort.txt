@@ -1,0 +1,13 @@
+# L7 HW2 pointer swap + sort - input => expected output
+# compile: gcc -Wall -Wextra hw2_swap_sort.c -o hw2_swap_sort.exe
+# input :  a b             (first line: two numbers to swap)
+#          count           (second line)
+#          v1 v2 ... vn    (third line)
+# output:  swap: a = A, b = B            (A and B already exchanged)
+#          after: ...                    (the array sorted ascending)
+# NOTE: the printed a/b must show the SWAP HAPPENED (pass by address).
+1 2\n6\n12 5 27 8 19 3 => swap: a = 2, b = 1\nafter: 3 5 8 12 19 27
+-7 7\n1\n42 => swap: a = 7, b = -7\nafter: 42
+5 5\n5\n5 4 3 2 1 => swap: a = 5, b = 5\nafter: 1 2 3 4 5
+0 0\n4\n2 2 2 2 => swap: a = 0, b = 0\nafter: 2 2 2 2
+1000000000 -1000000000\n3\n1 1 1 => swap: a = -1000000000, b = 1000000000\nafter: 1 1 1

@@ -1,0 +1,15 @@
+# L7 HW3 find + NULL - input => expected output
+# compile: gcc -Wall -Wextra -D__USE_MINGW_ANSI_STDIO=1 hw3_find_target.c -o hw3_find_target.exe
+#          (%td needs the MinGW macro)
+# input :  count           (first line)
+#          v1 v2 ... vn    (second line)
+#          target          (third line)
+# output:  found V at index I        when found (I = position of the FIRST match)
+#          not found                when absent (function returned NULL)
+# NOTE: first element, last element and absent are all covered.
+5\n3 5 -7 9 2\n-7 => found -7 at index 2
+5\n3 5 -7 9 2\n3 => found 3 at index 0
+5\n3 5 -7 9 2\n2 => found 2 at index 4
+5\n3 5 -7 9 2\n100 => not found
+1\n-1\n-1 => found -1 at index 0
+3\n1 2 3\n4 => not found

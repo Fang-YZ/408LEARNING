@@ -1,0 +1,16 @@
+# L6 HW4 binary search (challenge) - input => expected output
+# compile: gcc -Wall -Wextra hw4_binary_search.c -o hw4_binary_search.exe
+# input :  count           (first line)
+#          v1 v2 ... vn    (second line, ALREADY SORTED ascending)
+#          target          (third line)
+# output:  index = I, comparisons = C      when found
+#          not found, comparisons = C      when absent
+# NOTE: the 16-element set is 1 3 5 ... 31; target 29 is the case from the notes (4 comparisons).
+16\n1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31\n29 => index = 14, comparisons = 4
+16\n1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31\n1 => index = 0, comparisons = 4
+16\n1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31\n31 => index = 15, comparisons = 5
+16\n1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31\n30 => not found, comparisons = 5
+1\n5\n5 => index = 0, comparisons = 1
+1\n5\n7 => not found, comparisons = 1
+3\n2 4 6\n1 => not found, comparisons = 2
+3\n2 4 6\n9 => not found, comparisons = 2

@@ -1,0 +1,15 @@
+# L7 HW4 max via int ** (challenge) - input => expected output
+# compile: gcc -Wall -Wextra -D__USE_MINGW_ANSI_STDIO=1 hw4_max_pointer.c -o hw4_max_pointer.exe
+#          (%td needs the MinGW macro)
+# input :  count           (first line)
+#          v1 v2 ... vn    (second line; missing when count = 0)
+# output:  max = M, index = I       when the array is not empty
+#          empty array              when count = 0
+# NOTE: the callee must write the address into the CALLER'S pointer (int **);
+#       a local pointer inside the callee would leave main's pointer NULL.
+6\n12 5 27 8 19 3 => max = 27, index = 2
+1\n-5 => max = -5, index = 0
+4\n-5 -9 -2 -8 => max = -2, index = 2
+5\n5 5 5 5 5 => max = 5, index = 0
+0 => empty array
+3\n2000000000 147483647 1000000000 => max = 2000000000, index = 0

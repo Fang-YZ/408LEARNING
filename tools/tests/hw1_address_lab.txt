@@ -1,0 +1,14 @@
+# L7 HW1 address lab - input => expected output
+# compile: gcc -Wall -Wextra hw1_address_lab.c -o hw1_address_lab.exe
+# input :  x
+# output (4 lines, in this order):
+#   *p = V
+#   address match: yes
+#   q == p: yes
+#   after *p = *p * 2: x = W        (W must be 2 * V)
+# NOTE: real addresses change every run, so print the COMPARISON, not the address.
+21 => *p = 21\naddress match: yes\nq == p: yes\nafter *p = *p * 2: x = 42
+0 => *p = 0\naddress match: yes\nq == p: yes\nafter *p = *p * 2: x = 0
+-5 => *p = -5\naddress match: yes\nq == p: yes\nafter *p = *p * 2: x = -10
+1000000000 => *p = 1000000000\naddress match: yes\nq == p: yes\nafter *p = *p * 2: x = 2000000000
+-1000000000 => *p = -1000000000\naddress match: yes\nq == p: yes\nafter *p = *p * 2: x = -2000000000
